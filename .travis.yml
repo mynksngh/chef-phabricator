@@ -6,6 +6,6 @@ services: docker
 before_script:
   - cd chef
   - make install;
-  - make bundler
+  - make bundle
 
 script: bundle exec kitchen test
