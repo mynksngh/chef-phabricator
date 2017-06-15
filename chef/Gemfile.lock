@@ -233,11 +233,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  berkshelf (~> 6.1)
+  berkshelf (>= 5)
   chef (~> 13.1.0)
   kitchen-docker
   knife-solo
   test-kitchen
 
 BUNDLED WITH
-   1.14.6
+   1.15.1
