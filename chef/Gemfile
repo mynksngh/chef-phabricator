@@ -1,0 +1,8 @@
+source "https://rubygems.org"
+
+# Chef
+gem "berkshelf", "~> 6.1"
+gem "chef", "~> 13.1.0"
+gem 'knife-solo'
+gem "test-kitchen"
+gem "kitchen-docker"

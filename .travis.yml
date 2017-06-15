@@ -1,0 +1,11 @@
+rvm: 2.2
+
+sudo: required
+services: docker
+
+before_script:
+  - cd chef
+  - make install;
+  - make bundler
+
+script: bundle exec kitchen test

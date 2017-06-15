@@ -1,0 +1,4 @@
+/chef/cookbooks
+/chef/.kitchen/
+/chef/.bundle/
+/chef/vendor/
