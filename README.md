@@ -1,6 +1,11 @@
 # chef-phabricator
 A knife solo project for deploying a phabricator instance
 
+# Supports
+
+- Chef >= 13.1
+- CentOS 7
+
 # Setup
 
 (Install Ruby >=2.2)
