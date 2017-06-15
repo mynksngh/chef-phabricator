@@ -2,3 +2,4 @@
 /chef/.kitchen/
 /chef/.bundle/
 /chef/vendor/
+/chef/Gemfile.lock
