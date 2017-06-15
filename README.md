@@ -10,7 +10,7 @@ A knife solo project for deploying a phabricator instance
 
 # Setup
 
-(Install Ruby >=2.2)
+(Install Ruby >=2.3)
 ```bash
 make install
 ```
