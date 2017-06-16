@@ -1,4 +1,4 @@
-# chef-phabricator
+# chef-phabricator (wip)
 A knife solo project for deploying a phabricator instance
 
 [![Build Status](https://travis-ci.org/usemarkup/chef-phabricator.svg?branch=master)](https://travis-ci.org/usemarkup/chef-phabricator)
