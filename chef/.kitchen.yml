@@ -37,7 +37,13 @@ suites:
       - recipe[php]
       - recipe[php-fpm]
       - recipe[chef_nginx]
+      - recipe[mariadb::server]
+      - recipe[mariadb::client]
     attributes:
+        mariadb:
+          use_default_repository: true
+          install:
+            version: '10.2'
         packages-cookbook:
           git: install
           ntp: install
@@ -59,3 +65,4 @@ suites:
         - tests/yum.rb
         - tests/php.rb
         - tests/nginx.rb
+        - tests/mysql.rb

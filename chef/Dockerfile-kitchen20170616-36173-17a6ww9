@@ -1,0 +1,23 @@
+FROM centos/systemd
+
+            ENV container docker
+            RUN yum clean all
+            RUN yum install -y sudo openssh-server openssh-clients which curl
+            RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
+            RUN ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key -N ''
+
+          RUN if ! getent passwd kitchen; then                 useradd -d /home/kitchen -m -s /bin/bash -p '*' kitchen;               fi
+          RUN echo "kitchen ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+          RUN echo "Defaults !requiretty" >> /etc/sudoers
+          RUN mkdir -p /home/kitchen/.ssh
+          RUN chown -R kitchen /home/kitchen/.ssh
+          RUN chmod 0700 /home/kitchen/.ssh
+          RUN touch /home/kitchen/.ssh/authorized_keys
+          RUN chown kitchen /home/kitchen/.ssh/authorized_keys
+          RUN chmod 0600 /home/kitchen/.ssh/authorized_keys
+
+RUN sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
+RUN systemctl enable sshd.service
+RUN yum install net-tools -y && curl -LO https://omnitruck.chef.io/install.sh && sudo bash ./install.sh -v 13.1.31 && rm install.sh
+
+RUN echo ssh-rsa\ AAAAB3NzaC1yc2EAAAADAQABAAABAQDbXJV6S68fAMvBGHEu9xlbn742st4e1F8yArmqu5ckFU3F5Ox4AYyW0PC6G33RyvLbJtQr8PjnxTb09fJ27cMkusLQfMCoTD/eHOCKAoU5ABNuUT3wZrh11FbrLDMNWCNT8o8j/NbVWMJPD3bghOZpULjh/QMSo4E7YIbu0r4dzAYvHKOibxKg4zDw5NSYyJAPF6tkfnGqPH66uugtUG35m3LLwDJiKaP8z3XYkOwn\+3dBAuCBiKkGOgv3QRBWoATUGHkNElkpFjrtbM27iYhSRjkEQmIPqzU8hbJ8lFtLj9Jo1jwP6XDfs16omh1DW4fQObWi8ngWE4olh3GlPILN\ kitchen_docker_key >> /home/kitchen/.ssh/authorized_keys

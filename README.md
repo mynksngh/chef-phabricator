@@ -6,7 +6,7 @@ A knife solo project for deploying a phabricator instance
 # Supports
 
 - Chef >= 13.1
-- CentOS 7
+- CentOS 6 & 7 
 
 # Setup
 
