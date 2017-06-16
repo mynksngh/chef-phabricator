@@ -56,4 +56,6 @@ suites:
     verifier:
       inspec_tests:
         - tests/packages.rb
+        - tests/yum.rb
+        - tests/php.rb
         - tests/nginx.rb
