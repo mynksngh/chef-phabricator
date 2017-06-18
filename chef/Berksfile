@@ -1,6 +1,5 @@
 source "https://supermarket.chef.io"
 
-cookbook 'mariadb', :github => 'gsdevme/mariadb', :ref => 'patch-1'
-
+cookbook "phabricator", path: "site-cookbooks/phabricator"
 
 metadata

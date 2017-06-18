@@ -1,9 +1,7 @@
 DEPENDENCIES
-  mariadb
-    git: https://github.com/gsdevme/mariadb.git
-    revision: 00a3cad496ccc0171607b22ac8ebf9e245fa135e
-    ref: patch-1
   phabricator
+    path: site-cookbooks/phabricator
+  phabricator-omnibus
     path: .
     metadata: true
 
@@ -34,10 +32,11 @@ GRAPH
   ohai (5.1.0)
   packages (1.0.0)
   phabricator (0.0.1)
+  phabricator-omnibus (0.0.1)
     chef_nginx (~> 6.1)
+    mariadb (~> 1)
     packages (~> 1)
-    php (~> 4.2)
-    php-fpm (~> 0.7)
+    php-omnibus (~> 0.1)
     yum-epel (~> 2.1)
     yum-ius (~> 2.2)
   php (4.2.0)
@@ -48,6 +47,11 @@ GRAPH
   php-fpm (0.7.9)
     apt (>= 0.0.0)
     yum (>= 3.0)
+  php-omnibus (0.1.5)
+    php (>= 0.0.0)
+    php-fpm (>= 0.0.0)
+    yum-epel (>= 0.0.0)
+    yum-ius (>= 0.0.0)
   selinux_policy (2.0.1)
     compat_resource (>= 12.16.3)
   seven_zip (2.0.2)
