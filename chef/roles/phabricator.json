@@ -1,0 +1,33 @@
+{
+  "name": "phabricator",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "description": "",
+  "default_attributes": {
+    "packages-cookbook": {
+      "git": "install",
+      "ntp": "install",
+      "yum-cron": "install",
+      "openssl": "upgrade"
+    },
+    "php": {
+      "packages": [
+        "php71u-cli",
+        "php71u-intl",
+        "php71u-fpm",
+        "php71u-mbstring",
+        "php71u-iconv",
+        "php71u-json",
+        "php71u-opcache",
+        "php71u-mysqlnd",
+        "pear1u"
+      ]
+    }
+  },
+  "run_list": [
+    "recipe[yum-epel]",
+    "recipe[yum-ius]",
+    "recipe[packages]",
+    "recipe[php-omnibus]"
+  ]
+}

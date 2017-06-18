@@ -7,6 +7,7 @@ driver:
 platforms:
   - name: centos-7
     driver_config:
+      publish_all: true
       image: centos/systemd
       run_command: /usr/sbin/init
       privileged: true
@@ -25,29 +26,16 @@ verifier:
 suites:
   - name: prod
     run_list:
-      - recipe[yum-epel]
-      - recipe[yum-ius]
-      - recipe[packages]
-      - recipe[php-omnibus]
+      - role[phabricator]
       - recipe[chef_nginx]
-      - recipe[mariadb::server]
-      - recipe[mariadb::client]
+      - role[phabricator-database]
       - recipe[phabricator]
     attributes:
-        mariadb:
-          use_default_repository: true
-          install:
-            version: '10.2'
-        packages-cookbook:
-          git: install
-          ntp: install
-          yum-cron: install
-          openssl: upgrade
-        php-fpm:
-          user: nobody
-          group: nobody
-          package_name: php71u-fpm
-          service_name: php-fpm
+      php-fpm:
+        user: nobody
+        group: nobody
+        package_name: php71u-fpm
+        service_name: php-fpm
     verifier:
       inspec_tests:
         - tests/packages.rb
