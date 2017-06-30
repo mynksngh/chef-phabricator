@@ -1,0 +1,11 @@
+{
+  "environment": "production-instance",
+  "run_list": [
+    "recipe[phabricator::user]",
+    "role[phabricator]",
+    "recipe[chef_nginx]",
+    "recipe[phabricator::nginx]",
+    "role[phabricator-database]",
+    "recipe[phabricator]"
+  ]
+}

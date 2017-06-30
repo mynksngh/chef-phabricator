@@ -5,9 +5,8 @@
   "description": "",
   "default_attributes": {
     "packages-cookbook": {
-      "git": "install",
-      "ntp": "install",
-      "yum-cron": "install",
+      "git": "upgrade",
+      "ntp": "upgrade",
       "openssl": "upgrade"
     },
     "php": {
@@ -17,16 +16,27 @@
         "php71u-fpm",
         "php71u-mbstring",
         "php71u-iconv",
+        "php71u-curl",
         "php71u-json",
         "php71u-opcache",
         "php71u-mysqlnd",
+        "php71u-pcntl",
+        "php71u-gd",
+        "php71u-apcu",
         "pear1u"
       ]
+    },
+    "php-fpm": {
+      "user": "phabricator",
+      "group": "phabricator",
+      "package_name": "php71u-fpm",
+      "service_name": "php-fpm"
     }
   },
   "run_list": [
     "recipe[yum-epel]",
     "recipe[yum-ius]",
+    "recipe[selinux::disabled]",
     "recipe[packages]",
     "recipe[php-omnibus]"
   ]

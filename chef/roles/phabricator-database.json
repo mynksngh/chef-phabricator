@@ -8,6 +8,12 @@
       "use_default_repository": true,
       "install": {
         "version": "10.2"
+      },
+      "mysqld": {
+        "max_allowed_packet": "32M"
+      },
+      "innodb": {
+        "buffer_pool_size": "2048M"
       }
     }
   },
