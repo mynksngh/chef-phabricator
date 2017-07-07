@@ -6,6 +6,6 @@
     "recipe[chef_nginx]",
     "recipe[phabricator::nginx]",
     "role[phabricator-database]",
-    "recipe[phabricator]"
+    "recipe[phabricator::deploy]"
   ]
 }

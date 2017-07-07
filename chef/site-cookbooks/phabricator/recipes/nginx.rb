@@ -1,5 +1,5 @@
 group 'phabricator' do
-  action :modify
+  action :create
   members 'nginx'
   append true
 end
