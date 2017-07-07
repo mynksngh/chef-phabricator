@@ -26,10 +26,12 @@ verifier:
 suites:
   - name: prod
     run_list:
+      - recipe[phabricator::user]
       - role[phabricator]
       - recipe[chef_nginx]
+      - recipe[phabricator::nginx]
       - role[phabricator-database]
-      - recipe[phabricator]
+      - recipe[phabricator::deploy]
     attributes:
       php-fpm:
         user: nobody
